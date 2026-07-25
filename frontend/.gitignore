@@ -1,0 +1,64 @@
+# ==========================
+# Environment / Secrets
+# ==========================
+
+.env
+.env.*
+!.env.example
+
+# ==========================
+# Dependencies
+# ==========================
+
+node_modules/
+frontend/node_modules/
+
+# ==========================
+# Build Files
+# ==========================
+
+dist/
+frontend/dist/
+dist-ssr/
+
+# ==========================
+# Uploads
+# ==========================
+
+uploads/
+frontend/uploads/
+
+# ==========================
+# Logs
+# ==========================
+
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ==========================
+# Local Files
+# ==========================
+
+*.local
+
+# ==========================
+# Editor Files
+# ==========================
+
+.vscode/*
+!.vscode/extensions.json
+
+.idea/
+.DS_Store
+
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.swo

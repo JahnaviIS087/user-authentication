@@ -5,6 +5,7 @@ SecureAuth is a full-stack authentication and authorization system built using t
 ## Features
 
 ### Authentication
+
 - User registration and login
 - JWT-based authentication
 - Secure password hashing
@@ -15,6 +16,7 @@ SecureAuth is a full-stack authentication and authorization system built using t
 - Logout functionality
 
 ### User Profile
+
 - View account information
 - Update profile details
 - Upload/change profile picture
@@ -22,21 +24,28 @@ SecureAuth is a full-stack authentication and authorization system built using t
 - Secure account management dashboard
 
 ### Role-Based Authorization
+
 - User and Admin roles
 - Admin-only protected routes
 - Role-based access control middleware
 - Unauthorized access protection
 
 ### Admin User Management
+
 - View all registered users
+- Search users by name, email, or role
+- View user statistics
+- Promote User to Admin
+- Demote Admin to User
 - Block users
 - Unblock users
 - Delete users
-- Prevent administrator from blocking/deleting their own account
+- Prevent administrators from blocking or deleting their own accounts
 
 ## Tech Stack
 
 ### Frontend
+
 - React.js
 - Vite
 - React Router
@@ -45,18 +54,22 @@ SecureAuth is a full-stack authentication and authorization system built using t
 - CSS3
 
 ### Backend
+
 - Node.js
 - Express.js
 - MongoDB
 - Mongoose
 
 ### Security & Authentication
+
 - JSON Web Token (JWT)
 - Password hashing
 - Authentication middleware
 - Role-based authorization
 - Email verification
 - Secure password reset flow
+- Protected frontend routes
+- Admin-only routes
 
 ## Project Structure
 
@@ -86,8 +99,17 @@ secure-auth-system/
 │
 ├── uploads/
 │
+├── screenshots/
+│   ├── login.png
+│   ├── dashboard.png
+│   ├── profile.png
+│   └── admin-users.png
+│
 ├── frontend/
 │   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   └── services/
 │   ├── package.json
 │   └── vite.config.js
 │
@@ -112,45 +134,57 @@ EMAIL_USER=
 EMAIL_PASS=
 ```
 
-Add your actual credentials only to `.env`.
+Add your actual credentials only to your local `.env` file.
 
-> Never commit the `.env` file to GitHub.
+> Never commit the `.env` file or other credentials to GitHub.
 
 ## Installation
 
-### 1. Clone the repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/dhanushl-dev/user-autentication.git
 cd user-autentication
 ```
 
-### 2. Install backend dependencies
+### 2. Install Backend Dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Install frontend dependencies
+### 3. Install Frontend Dependencies
 
 ```bash
 cd frontend
 npm install
 ```
 
-### 4. Configure environment variables
+### 4. Configure Environment Variables
 
-Create a `.env` file in the root directory and provide the required environment variables.
+Create a `.env` file in the root directory and add the required environment variables.
 
-### 5. Start the backend
+Example:
 
-From the root directory:
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+EMAIL_USER=your_email
+EMAIL_PASS=your_email_app_password
+```
+
+Do not commit these real values to GitHub.
+
+### 5. Start the Backend
+
+Go to the root directory and run:
 
 ```bash
 npm run dev
 ```
 
-### 6. Start the frontend
+### 6. Start the Frontend
 
 Open another terminal:
 
@@ -159,18 +193,82 @@ cd frontend
 npm run dev
 ```
 
+The frontend will normally run on:
+
+```text
+http://localhost:5173
+```
+
+The backend will normally run on:
+
+```text
+http://localhost:5000
+```
+
+## Application Screenshots
+
+### Login Page
+
+![SecureAuth Login](screenshots/login.png)
+
+### User Dashboard
+
+![SecureAuth Dashboard](screenshots/dashboard.png)
+
+### User Profile
+
+![SecureAuth Profile](screenshots/profile.png)
+
+### Admin User Management
+
+![SecureAuth Admin User Management](screenshots/admin-users.png)
+
 ## Security
 
 SecureAuth implements multiple security mechanisms including:
 
-- Hashed passwords instead of plain-text storage
-- JWT authentication
-- Protected backend routes
-- Admin-only authorization middleware
+- Hashed passwords instead of plain-text password storage
+- JWT-based authentication
+- Backend authentication middleware
+- Role-based authorization
+- Admin-only route protection
+- Frontend protected routes
 - Email verification before account access
-- Password reset tokens
+- Secure password reset flow
 - User blocking controls
 - Environment variables for sensitive credentials
+
+## Main User Flow
+
+```text
+Register
+   ↓
+Email Verification
+   ↓
+Login
+   ↓
+JWT Authentication
+   ↓
+Dashboard
+   ↓
+Profile / Change Password
+```
+
+Admin users additionally have access to:
+
+```text
+Admin Dashboard
+      ↓
+User Management
+      ↓
+View / Search Users
+      ↓
+Block / Unblock
+      ↓
+Change Roles
+      ↓
+Delete Users
+```
 
 ## Future Improvements
 
